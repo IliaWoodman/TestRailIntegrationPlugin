@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>org.example.StudioPlugin</id>
+    <name>Android studio TestRail</name>
+    <vendor email="ivrom@company.com" url="http://www.ivromcompany.com">IVROM</vendor>
+
+    <description><![CDATA[
+    super plugin for android studio integrations with testrail
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <action id="SyncWithTestRail" class="SyncWithTestRail" text="QA. Sync class with TestRail"
+                description="Check and add @DisplayName and @Regress or @RegressFast">
+            <add-to-group group-id="ProjectViewPopupMenuRefactoringGroup" anchor="first"/>
+        </action>
+        <action id="SearchInGoogle" class="SearchInGoogle" text="QA. Search in Google"
+                description="Search selected text in Google">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift meta J"/>
+        </action>
+        <action id="GetTestCaseStatus" class="GetTestCaseStatus" text="QA. Get test case information"
+                description="Get test case information by selected test case id">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift meta I"/>
+        </action>
+        <action id="ChangeStatusOnIpProgress" class="ChangeStatusOnIpProgress" text="QA. Change status on InProgress">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift meta I"/>
+        </action>
+        <action id="ChangeStatusOnDone" class="ChangeStatusOnDone" text="QA. Change status on Done">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift meta P"/>
+        </action>
+    </actions>
+</idea-plugin>
