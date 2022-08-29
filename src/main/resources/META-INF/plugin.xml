@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>org.example.StudioPlugin</id>
-    <name>Android studio TestRail</name>
+    <name>QaHelperBcsTestRail</name>
     <vendor email="ivrom@company.com" url="http://www.ivromcompany.com">IVROM</vendor>
 
     <description><![CDATA[
@@ -18,23 +18,27 @@
     </extensions>
 
     <actions>
-        <action id="SyncWithTestRail" class="SyncWithTestRail" text="QA. Sync class with TestRail"
+        <action id="SyncWithTestRail" class="SyncWithTestRail" text="QA. Sync Class with TestRail"
                 description="Check and add @DisplayName and @Regress or @RegressFast">
             <add-to-group group-id="ProjectViewPopupMenuRefactoringGroup" anchor="first"/>
         </action>
         <action id="SearchInGoogle" class="SearchInGoogle" text="QA. Search in Google"
                 description="Search selected text in Google">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta J"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action id="GetTestCaseStatus" class="GetTestCaseStatus" text="QA. Get test case information"
+        <action id="GetTestCaseStatus" class="GetTestCaseStatus" text="QA. Get Test Case Information"
                 description="Get test case information by selected test case id">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta I"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action id="ChangeStatusOnIpProgress" class="ChangeStatusOnIpProgress" text="QA. Change status on InProgress">
+        <action id="ChangeStatusOnIpProgress" class="ChangeStatusOnIpProgress" text="QA. Change Status on InProgress">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta I"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action id="ChangeStatusOnDone" class="ChangeStatusOnDone" text="QA. Change status on Done">
+        <action id="ChangeStatusOnDone" class="ChangeStatusOnDone" text="QA. Change Status on Done">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta P"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
