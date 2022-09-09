@@ -1,38 +1,50 @@
 package helpers;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-
 public class TrProperties {
-    public String userName;
-    public String password;
-    public String inProgressStatus;
-    public String doneStatus;
-    public String baseUrl;
+    private static final TrProperties TR_PROPERTIES = new TrProperties();
+    private String userName;
+    private String password;
+    private String inProgressStatus;
+    private String doneStatus;
+    private String baseUrl;
 
-    private TrProperties() {}
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getInProgressStatus() {
+        return inProgressStatus;
+    }
+
+    public String getDoneStatus() {
+        return doneStatus;
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    static {
+        initProperties();
+    }
+
+    private TrProperties() {
+    }
+
+    private static void initProperties() {
+        TR_PROPERTIES.userName = PropertiesUtil.get("tr.email");
+        TR_PROPERTIES.password = PropertiesUtil.get("tr.password");
+        TR_PROPERTIES.inProgressStatus = PropertiesUtil.get("tr.status.inProgress");
+        TR_PROPERTIES.doneStatus = PropertiesUtil.get("tr.status.Done");
+        TR_PROPERTIES.baseUrl = PropertiesUtil.get("tr.baseurl");
+    }
 
     public static TrProperties getProperties() {
-        FileInputStream fis;
-        Properties property = new Properties();
-        TrProperties properties = new TrProperties();
-        try {
-            String userDir = System.getenv("HOME");
-            fis = new FileInputStream(userDir + "/test_rail.properties");
-            property.load(fis);
-            properties.userName = property.getProperty("tr.email");
-            properties.password = property.getProperty("tr.password");
-            properties.inProgressStatus = property.getProperty("tr.status.inProgress");
-            properties.doneStatus = property.getProperty("tr.status.Done");
-            properties.baseUrl = property.getProperty("tr.baseurl");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсуствует!");
-        }
-        return properties;
+        return TR_PROPERTIES;
     }
 
 }

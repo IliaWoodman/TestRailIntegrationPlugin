@@ -15,10 +15,10 @@ public class HttpHelper {
 
     public static TestCaseModel getTestCaseInfo(String caseId) {
         Request request = new Request.Builder()
-                .url(properties.baseUrl + "get_case/" + caseId)
+                .url(properties.getBaseUrl() + "get_case/" + caseId)
                 .get()
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", getBasicAuth(properties.userName, properties.password))
+                .addHeader("Authorization", getBasicAuth(properties.getUserName(), properties.getPassword()))
                 .build();
         Response response = null;
         try {
@@ -46,10 +46,10 @@ public class HttpHelper {
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create("{\"custom_auto\": " + status + "}", mediaType);
         Request request = new Request.Builder()
-                .url(properties.baseUrl + "update_case/" + caseId)
+                .url(properties.getBaseUrl() + "update_case/" + caseId)
                 .method("POST", body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", getBasicAuth(properties.userName, properties.password))
+                .addHeader("Authorization", getBasicAuth(properties.getUserName(), properties.getPassword()))
                 .build();
         Response response = null;
         try {

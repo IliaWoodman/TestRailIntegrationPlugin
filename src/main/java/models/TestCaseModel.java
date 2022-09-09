@@ -18,7 +18,7 @@ public class TestCaseModel {
     public Object estimateForecast;
     public Integer suiteID;
     public Integer displayOrder;
-    public Integer customTeam;
+    public Integer custom_team;
     public Integer custom_auto;
     public Integer customStatus;
     public Object customTag;
@@ -51,7 +51,7 @@ public class TestCaseModel {
                 ", estimateForecast=" + estimateForecast +
                 ", suiteID=" + suiteID +
                 ", displayOrder=" + displayOrder +
-                ", customTeam=" + customTeam +
+                ", custom_team=" + custom_team +
                 ", customAuto=" + custom_auto +
                 ", customStatus=" + customStatus +
                 ", customTag=" + customTag +

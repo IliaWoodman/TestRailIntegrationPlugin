@@ -11,7 +11,10 @@ import helpers.Annotations;
 import helpers.HttpHelper;
 import models.TestCaseModel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.kotlin.psi.*;
+import org.jetbrains.kotlin.psi.KtClass;
+import org.jetbrains.kotlin.psi.KtFile;
+import org.jetbrains.kotlin.psi.KtImportDirective;
+import org.jetbrains.kotlin.psi.KtPsiFactory;
 import org.jetbrains.kotlin.resolve.ImportPath;
 import org.jetbrains.uast.*;
 
@@ -34,7 +37,7 @@ public class SyncWithTestRail extends AnAction {
             Arrays.stream(uClass.getMethods())
                     .filter(m -> m.hasAnnotation(Annotations.LINK_LONG))
                     .forEach(m -> {
-                        syncMethod(m);
+                        syncClass(m);
                         displayNameCounter.getAndIncrement();
                     });
             String message = String.format("Обновлено/Добавлено %s @DisplayName", displayNameCounter.get());
@@ -63,9 +66,6 @@ public class SyncWithTestRail extends AnAction {
 
     private String getDisplayNameAnnotation(UAnnotation linkAnnotation) {
         String url = (String) Objects.requireNonNull(linkAnnotation.findAttributeValue("url")).evaluate();
-        System.out.println("-------------");
-        System.out.println(url);
-        System.out.println("-------------");
         String id = url.substring(url.lastIndexOf('/') + 1);
         TestCaseModel testCase = HttpHelper.getTestCaseInfo(id);
         String displayName = testCase.title;
@@ -76,7 +76,7 @@ public class SyncWithTestRail extends AnAction {
         return displayNameAnnotation;
     }
 
-    public void syncMethod(UMethod method) {
+    public void syncClass(UMethod method) {
         UAnnotation linkAnnotation = method.findAnnotation(Annotations.LINK_LONG);
         UAnnotation dispNameAnn = method.findAnnotation(Annotations.DISPLAY_NAME_LONG);
         CommandProcessor.getInstance().executeCommand(method.getProject(), () ->

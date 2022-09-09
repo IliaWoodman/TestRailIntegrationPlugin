@@ -22,11 +22,6 @@
                 description="Check and add @DisplayName and @Regress or @RegressFast">
             <add-to-group group-id="ProjectViewPopupMenuRefactoringGroup" anchor="first"/>
         </action>
-        <action id="SearchInGoogle" class="SearchInGoogle" text="QA. Search in Google"
-                description="Search selected text in Google">
-            <keyboard-shortcut keymap="$default" first-keystroke="shift meta J"/>
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
         <action id="GetTestCaseStatus" class="GetTestCaseStatus" text="QA. Get Test Case Information"
                 description="Get test case information by selected test case id">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta I"/>
@@ -39,6 +34,9 @@
         <action id="ChangeStatusOnDone" class="ChangeStatusOnDone" text="QA. Change Status on Done">
             <keyboard-shortcut keymap="$default" first-keystroke="shift meta P"/>
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+        <action id="CreateClassAction" class="CreateClassAction" text="QA. Create class">
+            <add-to-group group-id="ProjectViewPopupMenuRefactoringGroup" anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
